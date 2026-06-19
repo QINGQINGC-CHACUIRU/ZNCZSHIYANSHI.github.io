@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>青轻茶萃乳 | 藻×茶 ALGAE×TEA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        :root {
+            --light-green: #E6F7EB;
+            --haze-green: #96C3A8;
+            --haze-yellow: #F9E8A6;
+            --dark-green: #244030;
+            --white: #ffffff;
+        }
+        body {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            line-height: 1.6;
+        }
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 99;
+            border-bottom: 3px solid var(--haze-green);
+        }
+        .nav-bar a {
+            color: var(--dark-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .nav-bar a.active {
+            color: var(--haze-green);
+            border-bottom: 2px solid var(--haze-green);
+        }
+        .container {
+            margin-top: 60px;
+            padding: 20px 16px;
+        }
+        .banner {
+            background: var(--haze-green);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .logo-top {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--white);
+            text-align: left;
+            position: absolute;
+            top: 16px;
+            left: 16px;
+        }
+        .banner-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: var(--white);
+            margin: 20px 0 10px;
+        }
+        .banner-sub {
+            font-size: 16px;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .seal-tag {
+            display: inline-block;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            color: var(--white);
+            font-weight: bold;
+        }
+        .zero-box-group {
+            display: flex;
+            gap: 8px;
+            margin: 30px 0;
+        }
+        .zero-item {
+            flex: 1;
+            background: var(--haze-yellow);
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            border-left: 6px solid var(--haze-green);
+            padding-left: 10px;
+            margin-bottom: 24px;
+        }
+        .raw-card-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .raw-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 16px;
+            border-left: 4px solid var(--haze-green);
+        }
+        .raw-card h4 {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .process-video-box {
+            width: 100%;
+            background: #f3faf6;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 3px solid var(--haze-green);
+        }
+        .video-desc {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        .process-wrap {
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .process-list {
+            display: flex;
+            gap: 12px;
+            width: max-content;
+        }
+        .process-card {
+            width: 220px;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .process-card h4 {
+            color: var(--haze-green);
+            margin-bottom: 8px;
+        }
+        .product-info {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .sell-point {
+            margin: 20px 0;
+        }
+        .sell-point li {
+            list-style: none;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--haze-green);
+        }
+        .nutri-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .nutri-table td, .nutri-table th {
+            border: 1px solid var(--haze-green);
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .team-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .team-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .team-card .avatar {
+            width: 70px;
+            height: 70px;
+            background: var(--haze-green);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 10px;
+            border-top: 2px solid var(--haze-green);
+            margin-top: 40px;
+            font-size: 13px;
+        }
+        .upload-preview-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
+            gap: 10px;
+            margin: 16px 0 30px;
+        }
+        .upload-preview-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--haze-green);
+        }
+        .upload-preview-item img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="#raw" class="active">原料</a>
+        <a href="#process">制作</a>
+        <a href="#product">产品</a>
+        <a href="#team">团队</a>
+    </div>
+
+    <div class="container">
+        <div class="banner">
+            <div class="logo-top">藻×茶 ALGAE×TEA</div>
+            <div class="banner-title">青轻茶萃乳</div>
+            <div class="banner-sub"> 天然植养 纤润无负担</div>
+            <div class="seal-tag">100%天然</div>
+            <div class="zero-box-group">
+                <div class="zero-item">0香精</div>
+                <div class="zero-item">0防腐剂</div>
+                <div class="zero-item">0植脂末</div>
+            </div>
+        </div>
+
+        <!-- 原料板块 -->
+        <section id="raw" class="section">
+            <h2 class="section-title">原料 · 五重天然基底</h2>
+            <div class="upload-preview-wrap">
+                <div class="upload-preview-item">
+                    <img src="images/milk.jpg" alt="纯牛奶原料">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/white-tea.jpg" alt="福鼎白茶">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/rhine-algae.jpg" alt="莱茵衣藻粉">
+                </div>
+            </div>
+
+            <div class="raw-card-list">
+                <div class="raw-card">
+                    <h4>纯牛奶</h4>
+                    <p>高钙高蛋白牛乳，每100mL含钙105mg，清甜醇厚，营养基底</p>
+                </div>
+                <div class="raw-card">
+                    <h4>福鼎白茶</h4>
+                    <p>低温冷萃鲜茶汤，清润解腻，中和奶脂厚重感，茶香柔和不苦涩</p>
+                </div>
+                <div class="raw-card">
+                    <h4>莱茵衣藻粉</h4>
+                    <p>天然植物富养原料，纤润无负担，特色功能营养载体</p>
+                </div>
+                <div class="raw-card">
+                    <h4>活性复合益生菌</h4>
+                    <p>恒温发酵锁活菌，搭配藻粉促进肠道吸收，轻养肠胃</p>
+                </div>
+                <div class="raw-card" style="grid-column: 1 / -1;">
+                    <h4>古法红糖</h4>
+                    <p>低甜温和配方，低碳水配比，平衡藻、茶、牛乳风味，无额外添加蔗糖</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 制作工艺板块（视频已修复） -->
+        <section id="process" class="section">
+            <h2 class="section-title">制作 ·实验室标准化萃取工艺</h2>
+            <div class="process-video-box">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116776520130073&bvid=BV14HjB68En4&cid=39241714149&p=1" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                <p class="video-desc">青轻茶萃乳完整制作工艺实拍视频</p>
+            </div>
+            <div class="upload-preview-wrap">
+                <div class="upload-preview-item">
+                    <img src="images/mix-step.jpg" alt="原料搅拌工艺">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/fill-step.jpg" alt="无菌灌装">
+                </div>
+            </div>
+
+            <div class="process-wrap">
+                <div class="process-list">
+                    <div class="process-card">
+                        <h4>1.原料准备</h4>
+                        <p>牛奶750ml，红糖10g，白茶5g，益生菌2g，莱茵衣藻粉1g</p>
+                    </div>
+                    <div class="process-card">
+                        <h4>2.红糖熬制白茶</h4>
+                        <p>红糖与白茶一同熬煮，萃取茶香基底</p>
+                    </div>
+                    <div class="process-card">
+                        <h4>3.混合调配</h4>
+                        <p>莱茵衣藻粉、牛奶与茶液充分搅拌混合均匀</p>
+                    </div>
+                    <div class="process-card">
+                        <h4>4.降温加菌</h4>
+                        <p>混合液室温冷却后，投入益生菌搅拌融合</p>
+                    </div>
+                    <div class="process-card">
+                        <h4>5.恒温发酵</h4>
+                        <p>牛乳茶分装后40℃恒温发酵4小时</p>
+                    </div>
+                    <div class="process-card">
+                        <h4>6.冷却无菌灌装</h4>
+                        <p>发酵完成冷却，酸奶无菌密封罐装</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品板块 -->
+        <section id="product" class="section">
+            <h2 class="section-title">产品 · 青轻茶萃乳</h2>
+            <div class="upload-preview-wrap">
+                <div class="upload-preview-item">
+                    <img src="images/package.jpg" alt="产品包装实拍">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/drink-final.jpg" alt="成品饮品">
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h4>基础信息</h4>
+                <p>品名：青轻茶萃乳</p>
+                <p>净含量：300mL / 瓶</p>
+                <p>保质期：3天</p>
+
+                <div class="sell-point">
+                    <h4>三大核心卖点</h4>
+                    <li>✔ 青藻富养：莱茵衣藻天然植物营养补充，新式功能奶茶</li>
+                    <li>✔ 天然植养：全原生食材配料，无人工化学添加剂</li>
+                    <li>✔ 纤润无负担：低卡低脂，每100mL仅69.77kcal，代餐无压力</li>
+                </div>
+
+                <h4>营养成分简表（每100mL）</h4>
+                <table class="nutri-table">
+                    <tr>
+                        <th>项目</th>
+                        <th>含量</th>
+                        <th>NRV参考值</th>
+                    </tr>
+                    <tr>
+                        <td>能量</td>
+                        <td>69.77 kcal</td>
+                        <td>3%</td>
+                    </tr>
+                    <tr>
+                        <td>蛋白质</td>
+                        <td>3.44 g</td>
+                        <td>6%</td>
+                    </tr>
+                    <tr>
+                        <td>脂肪</td>
+                        <td>3.82 g</td>
+                        <td>6%</td>
+                    </tr>
+                    <tr>
+                        <td>钙</td>
+                        <td>105.00 mg</td>
+                        <td>13%</td>
+                    </tr>
+                </table>
+                <p style="margin-top:12px;font-size:13px;">适用场景：早餐搭配、办公室代餐、餐后解腻、日常轻养饮品</p>
+            </div>
+        </section>
+
+        <!-- 团队板块 ZNCZ实验室 含5张单人照 -->
+        <section id="team" class="section">
+            <h2 class="section-title">团队成员 · ZNCZ实验室</h2>
+            <p style="margin-bottom:20px;">本产品由ZNCZ实验室自主研发，融合藻类生物技术与新式茶饮配方，完成原料采购、配方研发、产品优化与品牌设计全流程。</p>
+            <!-- 五人单人照片 -->
+            <div class="upload-preview-wrap">
+                <div class="upload-preview-item">
+                    <img src="images/zng.jpg" alt="zng">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/nsy.jpg" alt="nsy">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/cyq.jpg" alt="cyq">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/zzt.jpg" alt="zzt">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/dz.jpg" alt="dz">
+                </div>
+            </div>
+            <!-- 合照、实验室实拍 -->
+            <div class="upload-preview-wrap">
+                <div class="upload-preview-item">
+                    <img src="images/team-group.jpg" alt="ZNCZ实验室成员合照">
+                </div>
+                <div class="upload-preview-item">
+                    <img src="images/lab-work.jpg" alt="实验室研发实拍">
+                </div>
+            </div>
+
+            <div class="team-list">
+                <div class="team-card">
+                    <div class="avatar">采购</div>
+                    <h4>产品采购</h4>
+                    <p>负责牛乳、白茶、莱茵衣藻、益生菌等原料筛选、采购，保障安全。</p>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">配方1</div>
+                    <h4>配方设计与优化</h4>
+                    <p>负责基底奶茶配比调试、甜度控制，优化基础风味体系。</p>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">配方2</div>
+                    <h4>配方设计与优化</h4>
+                    <p>负责莱茵衣藻添加比例实验、益生菌适配调试，提升产品功能性。</p>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">配方3</div>
+                    <h4>配方设计与优化</h4>
+                    <p>负责整体口感平衡、风味融合测试、成品口感迭代优化。</p>
+                </div>
+                <div class="team-card" style="grid-column: 1 / -1;">
+                    <div class="avatar">包装</div>
+                    <h4>产品包装设计</h4>
+                    <p>负责品牌视觉、瓶身标签、全套包装样机、网页视觉整体设计。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>藻×茶 ALGAE×TEA 青轻茶萃乳 | ZNCZ实验室研发</p>
+        <p style="margin-top:8px;">扫码查看完整产品研发资料 · 300mL青轻茶萃乳</p>
+    </footer>
+</body>
+</html>
